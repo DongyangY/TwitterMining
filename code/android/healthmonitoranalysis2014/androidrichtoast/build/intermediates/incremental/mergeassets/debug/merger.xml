@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/assets" >
+            <file
+                name="fonts/Roboto-Light.ttf"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/assets/fonts/Roboto-Light.ttf" />
+            <file
+                name="fonts/Roboto-Thin.ttf"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/assets/fonts/Roboto-Thin.ttf" />
+            <file
+                name="screenshot.png"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/assets/screenshot.png" />
+        </source>
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/debug/assets" />
+    </dataSet>
+
+</merger>

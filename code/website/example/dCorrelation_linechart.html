@@ -1,0 +1,136 @@
+ <html>
+  <head>
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(getdata_eh);
+
+      function getdata_eh() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 17, who: 1},
+          showdata_eh // The function to call on completion.
+        );
+      }
+
+      function showdata_eh(json) {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'time of tweets');
+          data.addColumn('number', 'exercise-related');
+          data.addColumn('number', 'health-related');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].duration, parseInt(json[i].exercise_count), parseInt(json[i].health_count)]
+            ]);
+          }
+
+        var options = {
+          title: 'Correlation between different Topics',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+//----------------------------------------------------------------
+      function getdata_fh() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 17, who: 1},
+          showdata_fh // The function to call on completion.
+        );
+      }
+
+      function showdata_fh(json) {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'time of tweets');
+          data.addColumn('number', 'fruit-related');
+          data.addColumn('number', 'health-related');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].duration, parseInt(json[i].fruit_count), parseInt(json[i].health_count)]
+            ]);
+          }
+
+        var options = {
+          title: 'Correlation between different Topics',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+//----------------------------------------------------------------
+      function getdata_ef() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 17, who: 1},
+          showdata_ef // The function to call on completion.
+        );
+      }
+
+      function showdata_ef(json) {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'time of tweets');
+          data.addColumn('number', 'exercise-related');
+          data.addColumn('number', 'fruit-related');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].duration, parseInt(json[i].exercise_count), parseInt(json[i].fruit_count)]
+            ]);
+          }
+
+        var options = {
+          title: 'Correlation between different Topics',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+
+    <form name="form1" method="post" action="">
+    <SELECT name=mletters onChange="option_changed(document.form1.mletters.options[document.form1.mletters.selectedIndex].value)">
+    <OPTION selected>choose type</OPTION> 
+    <OPTION value="Exercise and Health" selected="selected">Exercise and Health</OPTION> 
+    <OPTION value="Fruit and Health">Fruit and Health</OPTION>
+    <OPTION value="Exercise and Fruit">Exercise and Fruit</OPTION> 
+    </select>
+    </form>
+
+    <script>
+        function option_changed(option_id){
+           if (option_id == "Exercise and Health")
+           {
+            getdata_eh();
+           }
+           else if (option_id == "Fruit and Health") 
+           {
+            getdata_fh();
+           }
+           else if (option_id == "Exercise and Fruit") 
+           {
+            getdata_ef();
+           }
+        }    
+    </script>
+
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+
+    <script type="text/javascript">
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(getdata_gender);
+
+      function getdata_gender() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 21, who: 1},
+          showdata_gender // The function to call on completion.
+        );
+      }
+
+      function showdata_gender(json) {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Gender');
+        data.addColumn('number', 'Count');
+        for (var i = 0; i < 2; i++){
+          data.addRows([
+            [json[i].gender_age, parseInt(json[i].demography_count)],
+          ]);
+        } 
+
+        var options = {
+
+          title: 'Demography Distribution',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+
+
+
+      function getdata_age() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 21, who: 1},
+          showdata_age // The function to call on completion.
+        );
+      }
+
+      function showdata_age(json) {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Age');
+        data.addColumn('number', 'Count');
+        for (var i = 2; i < 9; i++){
+          data.addRows([
+            [json[i].gender_age, parseInt(json[i].demography_count)],
+          ]);
+        } 
+
+        var options = {
+
+          title: 'Demography Distribution',
+          pieHole: 0.4,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <button onclick=buttonclick_gender()>gender</button>
+    <button onclick=buttonclick_age()>age</button>
+
+   <script>
+      function buttonclick_gender(){
+         getdata_gender();
+      }
+
+      function buttonclick_age(){
+         getdata_age();
+      }      
+   </script>
+    <div id="donutchart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res" >
+            <file
+                name="icon_admins"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable/icon_admins.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icon_budget"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable/icon_budget.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icon_heart"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable/icon_heart.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="icon_speakers"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable/icon_speakers.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="rounded_corners"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable/rounded_corners.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable-hdpi/ic_launcher.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="icon_heart"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable-hdpi/icon_heart.png"
+                qualifiers="hdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable-mdpi/ic_launcher.png"
+                qualifiers="mdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable-xhdpi/ic_launcher.png"
+                qualifiers="xhdpi-v4"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/drawable-xxhdpi/ic_launcher.png"
+                qualifiers="xxhdpi-v4"
+                type="drawable" />
+            <file
+                name="rich_layout"
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/layout/rich_layout.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/values/strings.xml"
+                qualifiers="" >
+                <string name="app_name" >RichToast
+                </string>
+            </file>
+            <file
+                path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/main/res/values/styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+            </file>
+        </source>
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/build/generated/res/rs/debug" />
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/build/generated/res/generated/debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androidRichToast/src/debug/res" />
+    </dataSet>
+
+</merger>

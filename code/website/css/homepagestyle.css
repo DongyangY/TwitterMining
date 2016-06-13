@@ -1,0 +1,112 @@
+<style type="text/css">
+#frame {
+	position: absolute;
+	margin-left:-900px;
+	left:50%;
+	width: 1800px;
+	height: 1185px;
+	z-index: -1;
+	background-color: ;
+}
+#background {
+	position: absolute;
+	margin-left:-900px;
+	left:50%;
+	width: 1800px;
+	height: 1185px;
+	z-index: 0;
+	
+}
+#top {
+	position: absolute;
+	width: 1800px;
+	height: 85px;
+	z-index: 1;
+	background-color: #0099CC;
+	
+}
+#title {
+	position: absolute;
+	width: 1000px;
+	height: 45px;
+	z-index: 2;
+	font-family: "Comic Sans MS", cursive;
+	font-weight: bold;
+	font-size: 30px;
+	text-align: center;
+	left: 413px;
+	top: 17px;
+	color: #FFF;
+}
+
+
+#main {
+	position: absolute;
+	margin-left:-800px;
+	left:50%;
+	width: 1800px;
+	height: 1000px;
+	z-index: 1;
+	top: 85px;
+	
+}
+#nav {
+	position: absolute;
+	width: 1800px;
+	margin-left:-100px;
+	height: 50px;
+	z-index: 3;
+	background-color: #FFFFFF;
+}
+#feature {
+	position: absolute;
+	width: 1800px;
+	height: 950px;
+	z-index: 2;
+	
+	top: 50px;
+	
+}
+#left {
+	position: absolute;
+	width: 650px;
+	height: 930px;
+	left:-100px;
+	z-index: 3;
+	
+	top: 10px;
+	background-color: #FFFFFF;
+	border:0.5px solid;
+border-radius:15px;
+}
+#right {
+	position: absolute;
+	width: 1110px;
+	height: 930px;
+	z-index: 3;
+	left: 590px;
+	top: 10px;
+	background-color: #FFFFFF;
+	border:0.5px solid;
+border-radius:15px;
+}
+#bottom {
+	position: absolute;
+	width: 1800px;
+	height: 100px;
+	z-index: 1;
+	top: 1085px;
+	background-color: #FFFFFF;
+}
+
+#contact {
+	position: absolute;
+	width: 1800px;
+	height: 100px;
+	z-index: 2;
+	top: 0px;
+	background-color: #0099CC;
+	left: 0px;
+}
+
+</style>

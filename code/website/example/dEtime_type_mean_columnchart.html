@@ -1,0 +1,136 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+
+    <script language="javascript">
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(getdata_mean);
+
+      function getdata_mean() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 12, who: 1},
+          showdata_mean // The function to call on completion.
+        );
+      }
+
+      function showdata_mean(json) {
+
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Exercise types');
+          data.addColumn('number', 'Average Duration');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].exercise_type, parseInt(json[i].mean)]
+            ]);
+          } 
+
+        var options = {
+          title: 'Exercise types Distribution',
+          hAxis: {title: 'Types', titleTextStyle: {color: 'blue'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+
+
+
+
+      function getdata_max() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 12, who: 1},
+          showdata_max // The function to call on completion.
+        );
+      }
+
+      function showdata_max(json) {
+
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Exercise types');
+          data.addColumn('number', 'Max Duration');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].exercise_type, parseInt(json[i].max)]
+            ]);
+          } 
+
+        var options = {
+          title: 'Exercise types Distribution',
+          hAxis: {title: 'Types', titleTextStyle: {color: 'blue'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+      
+
+
+
+      function getdata_std() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 12, who: 1},
+          showdata_std // The function to call on completion.
+        );
+      }
+
+      function showdata_std(json) {
+
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('string', 'Exercise types');
+          data.addColumn('number', 'Standard Deviation of Dutation');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [json[i].exercise_type, parseInt(json[i].std)]
+            ]);
+          } 
+
+        var options = {
+          title: 'Exercise types Distribution',
+          hAxis: {title: 'Types', titleTextStyle: {color: 'blue'}}
+        };
+
+        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+
+
+    </script>
+  </head>
+
+  <body>
+    <button onclick=buttonclick_mean()>mean</button>
+    <button onclick=buttonclick_max()>max</button>
+    <button onclick=buttonclick_std()>std</button>
+
+  <script>
+      function buttonclick_mean(){
+         getdata_mean();
+      }
+
+      function buttonclick_max(){
+         getdata_max();
+      } 
+
+      function buttonclick_std(){
+         getdata_std();
+      }      
+  </script>
+
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+
+</html>

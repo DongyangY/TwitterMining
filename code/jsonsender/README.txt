@@ -1,0 +1,1 @@
+This directory contains the file controlling communication between server and website (GET), ios (POST), or android (GET). 

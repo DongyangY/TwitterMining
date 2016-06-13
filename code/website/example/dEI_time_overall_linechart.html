@@ -1,0 +1,45 @@
+ <html>
+  <head>
+    <script src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script>
+
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(getdata);
+
+      function getdata() {
+        $.getJSON(
+          "../jsonsender/jsonsender.php", // The server URL
+          {id: 4},
+          showdata // The function to call on completion.
+        );
+      }
+
+      function showdata(json) {
+
+          var data = new google.visualization.DataTable();
+          data.addColumn('number', 'time of tweets');
+          data.addColumn('number', 'amount of tweets');
+          for (var i = 0; i < eval(json).length; i++){
+            data.addRows([
+              [i, parseInt(json[i].time_count)]
+            ]);
+          }
+
+        var options = {
+          title: 'Trend of Tweets',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>

@@ -1,0 +1,183 @@
+<html>
+  <head>
+    <title>Weighted Average Exercise Calorie Consumption</title> 
+  <style>
+  a:linked {
+    color: blue;
+  }
+  a:visited {
+    color: blue;
+  }
+  a:hover {
+  color: red;
+  }
+  a:active {
+  color: yellow;
+  } 
+  </style>
+  <head>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      
+      function getdata() {
+      $.getJSON(
+      "../jsonsender/jsonsender.php",
+      {id: 22},
+      showdata1
+      );
+      }
+
+      function showdata1(json) {
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Time');
+      data.addColumn('number', 'Workdays');
+      data.addColumn('number', 'Weekends');
+      for (var i = 0; i < 24; i++){
+			  data.addRows([
+			  [i, parseFloat(json[i].calorie), parseFloat(json[i+24].calorie)]
+			  ]);
+			  }
+			  var options = {
+			  title: 'Weighted Average Exercise Calorie in Time Span (Original Keyword)',
+			  curveType: 'function',
+			  vAxis: {title: 'Caloires'},
+			  hAxis: {title: '24 Hour Clock'}
+			  };
+			  
+			  var chart = new google.visualization.LineChart(document.getElementById('timespan_old'));
+			  
+			  chart.draw(data, options);
+			  
+			  $.getJSON(
+			  "../jsonsender/jsonsender.php", // The server URL
+			  {id: 23},
+			  showdata2 // The function to call on completion.
+			  ); 
+      }
+
+      function showdata2(json) {
+          var data = new google.visualization.DataTable();
+          data.addColumn('number', 'Time');
+          data.addColumn('number', 'Workdays');
+          data.addColumn('number', 'Weekends');
+          for (var i = 0; i < 24; i++){
+            data.addRows([
+              [i, parseFloat(json[i].calorie), parseFloat(json[i+24].calorie)]
+            ]);
+          }
+          var options = {
+          title: 'Weighted Average Exercises Calorie in Time Span (Refined Keyword)',
+          curveType: 'function',
+          vAxis: {title: 'Caloires'},
+          hAxis: {title: '24 Hour Clock'}
+          };
+          var chart = new google.visualization.LineChart(document.getElementById('timespan_new'));
+          chart.draw(data, options);
+      }
+
+      function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+      ['Keywords for running', 'Accuracy'],
+      ['run mile', 34],
+      ['#running miles', 46],
+      ['ran miles', 88],
+      ['ran mins', 84],
+      ['ran calories', 92],
+      ['*ran mins', 98]
+      ]);
+      var options = {
+      title: 'Running Keyword Choices for Calorie Calculation',
+      vAxis: {title: 'Keywords Combination'},
+      hAxis: {title: 'Accuracy (%)'},
+      legend: { position: "none" }
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('keyword_compare'));
+      chart.draw(data, options);
+      var data = google.visualization.arrayToDataTable([
+      ['Exercises', 'Current', {role: 'annotation'}, 'Previous', {role: 'annotation'}],
+      ['Running', 98, 'ran mins', 34, 'running mins'],
+      ['Cycling', 90, 'rode mins', 58, 'cycling mins'],
+      ['Swimming', 98, 'swam mins', 32, 'swimming mins'],
+      ['Basketball', 70, 'played baseketball mins', 22, 'basketball mins'],
+      ['Football', 70, 'played football mins', 32, 'football mins']
+      ]);
+      var options = {
+      title: 'Comparing Current Keywords with Perivious Keywords',
+      vAxis: {title: 'Exercise Types'},
+      hAxis: {title: 'Accuracy (%)'}
+      };
+      var chart = new google.visualization.BarChart(document.getElementById('keyword_refine'));
+      chart.draw(data, options);
+      getdata();
+      }	      
+    </script>
+
+    <body>
+      <div id="top">
+      <p>Back to <a href = "index.html">Main Page</a></p>
+      <p align = center><font size = 5><b>Weighted Average Exercise <font color = red>Calorie</font> Consumption</b></font></p>
+      <hr>
+      </div>
+      <div id="mid">
+      <p><font size = 4><i>Why calorie</i></font></p>
+      <ul>
+	<li>Consider the intensity of exercise, instead of simply counting the number of tweets.</li>
+	<li>Applied to combine different exercises into the same scale.</li>
+      </ul>
+      <br>
+      <p><font size = 4><i>Step 1: Refine keyword</i></font></p>
+      <ul>
+        <li>More idiomatic.</li>
+        <li>Obey some rules to eliminate wrong patterns.</li>
+      </ul>
+      <div id="keyword_compare" style="width: 900px; height: 500px"></div>
+      <p>* presents for the keyword restricted by the rules.</p>
+      <br>
+      <div id="timeline">
+	<a class="twitter-timeline" href="https://twitter.com/search?q=ran%20mins" data-widget-id="537344797233905664">Tweets by 'ran mins'</a>
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+      </div>
+      <br>
+      <p>Using past tense contributes the idiomaticity. As a result, the hashtag is not the best choice. <i>ran miles</i>, <i>ran mins</i>, and <i>ran calories</i> are good candidates. But <i>miles</i> can not be applied to other exercises, and <i>calories</i> appearsin the tweet at low frequency. The accuracy of <i>ran mins</i> improved by obeying the rules below:</p>
+      <ul>
+        <li>In-order</li>
+	<img src = "calorie_img/order.png">
+	<li>Short distance</li>
+	<img src = "calorie_img/distance.png">
+	<li>No comma, dot, apostrophe between</li>
+	<img src = "calorie_img/dot.png">
+	<li>No word group</li>
+	<img src = "calorie_img/group.png">
+      </ul>
+      <p>The solution is the pattern matching. See details for P.M. in <a href = "http://dev.mysql.com/doc/refman/5.0/en/pattern-matching.html">MySQL</a> and <a href = "http://php.net/manual/en/function.preg-match.php">PHP</a>.</p>
+      <div style="background-color: #E6E6E6">{<br><code>$sql = "SELECT tweet_text, created_at FROM tweets_new WHERE tweet_text LIKE '%".$Exe_type[$j]." % mins %' AND tweet_text NOT LIKE '%ran out%' AND tweet_text NOT LIKE '%".$Exe_type[$j]." %[,.]% mins %'";</code><br>}</div>
+      <div id="keyword_refine" style="width: 900px; height: 500px;"></div>
+      <br>
+      <p><font size = 4><i>Step 2: Calculate calorie</i></font></p>
+      <ul>
+        <li>Extract the time of exercise.</li>
+	<P>The time extraction accuracy of original keywords is really low. Click to see the <a href = "calorie_file/calorie.php">time extraction test file.</a></P>
+	<p>The time extraction with refined keywords applied rules above and threshold for different exercises has little error. Click to see the <a href = "calorie_file/calorie_new.php">time extraction test file.</a>
+        <li>Calculate the weighted average calorie in different exercises.</li>
+	<p>Equation:</p>
+	<img src = "calorie_img/equation.png">
+	<p><i>n</i> is the number of exercise types.</p>
+	<p><i>W</i> is the fraction of the exercise among all types.</p>
+	<p><i>C</i> is the calorie burned rate per hour of different exercises.</p>
+	<p><i>n</i> is the average time of differnt exercises from tweets.</p>
+	<p>The threshold and the fraction of exercise are collected from <a href = "http://www.bls.gov/spotlight/2008/sports/">U.S. Bureau of Labor Staistics</a> offical website. And the calorie burned rate is collected from <a href = "http://www.nutristrategy.com/caloriesburnedrunning.htm">NUTRISTRATEGY</a> offical website.  
+      </ul>
+      <br>
+      <p><font size = 4><i>Step 3: Visualize calorie</i></font></p>
+      <div id="timespan_old" style="width: 900px; height: 500px;"></div>
+      <div id="timespan_new" style="width: 900px; height: 500px;"></div>      
+      </div>
+      <div id="bottom">
+      <hr>
+      <p>Rutgers University, Software Engineering I, Group 2</p>
+      </div>
+    </body> 
+</html>

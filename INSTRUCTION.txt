@@ -1,0 +1,22 @@
+    -
+    |
+    +-----> doc           // All REPORTS (including REPORT #3), demo1 & demo2 documentions, screenshots for web & IOS & ANDROID
+    |
+    +-----> design        // UML diagrams design files
+    |
+    +--+--> code          // project code
+       |
+       +-------> database     // database setup, Twitter API data collecting
+       |
+       +-------> features     // data analysis files, feature tables
+       |
+       +-------> jsonsender   // communication controller between server and clients
+       |
+       +-------> website      // website design files
+       |
+       +-------> IOS          // IOS design files
+       |
+       +-------> ANDROID      // ANDROID design files
+    |
+    +-----> tests         // unit tests and integration tests    |
+    +-----> data          // row data collected with refined keywords

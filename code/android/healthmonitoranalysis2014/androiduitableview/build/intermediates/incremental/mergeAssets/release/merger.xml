@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="2" >
+
+    <dataSet config="main" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androiduitableview/src/main/assets" />
+    </dataSet>
+    <dataSet config="release" >
+        <source path="/Users/weiranfang/AndroidStudioProjects/HealthMonitorAnalysis2014/androiduitableview/src/release/assets" />
+    </dataSet>
+
+</merger>
